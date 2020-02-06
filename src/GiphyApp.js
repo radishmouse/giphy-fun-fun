@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import GiphyImage from './GiphyImage';
 
 const giphyUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eVMR7t69RXHLDlBT7LkHS3TphZhKBrCF&q=laser&limit=25&offset=0&rating=G&lang=en';
 
@@ -32,10 +33,15 @@ class GiphyApp extends React.Component {
 
     render() {
         return (
-            <div>
+            <div>                
                 <button onClick={this._getGiphy}>
                     🧘‍♂️
                 </button>
+                {
+                    this.state.giphies.map(giphy => (
+                        <GiphyImage giphy={giphy} />
+                    ))
+                }
             </div>
         );
     }
