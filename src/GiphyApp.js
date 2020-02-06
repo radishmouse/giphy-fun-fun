@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import GiphyImage from './GiphyImage';
 
-const giphyUrl = 'https://api.giphy.com/v1/gifs/search?api_key=eVMR7t69RXHLDlBT7LkHS3TphZhKBrCF&q=laser&limit=25&offset=0&rating=G&lang=en';
+const giphyUrl = 'https://api.giphy.com/v1/gifs/random?api_key=H2R4CV5XYRUZEG1jAn5GP4Rl9oWsSeCX&tag=cat&rating=G';
+
 
 class GiphyApp extends React.Component {
 
@@ -37,6 +38,7 @@ class GiphyApp extends React.Component {
                 <button onClick={this._getGiphy}>
                     🧘‍♂️
                 </button>
+                <br />
                 {
                     this.state.giphies.map(giphy => (
                         <GiphyImage giphy={giphy} />
@@ -49,11 +51,11 @@ class GiphyApp extends React.Component {
     _getGiphy = () => {
         axios.get(giphyUrl)
             .then(response => {
-                console.log(response.data.data[0].images.downsized_large);
+                console.log(response.data.data.images.downsized_large);
                 this.setState({
                     giphies: [
+                        response.data.data.images.downsized_large,
                         ...this.state.giphies,
-                        response.data.data[0].images.downsized_large
                     ]
                 });
             })
