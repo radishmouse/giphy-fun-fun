@@ -1,0 +1,12 @@
+.giphy-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.giphy-image .tall{
+  height: 100%;
+}
+.giphy-image .wide{
+  width: 100%;
+}
